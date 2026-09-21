@@ -1,0 +1,10 @@
+<Solution>
+  <Folder Name="/Prompt_Engineering/">
+    <File Path="LAB_003.md" />
+    <Project Path="Badword_Filter.Test/Badword_Filter.Test.csproj" />
+    <Project Path="Badword_Filter/Badword_Filter.csproj" />
+  </Folder>
+  <Folder Name="/Solution Items/">
+    <File Path="README.md" />
+  </Folder>
+</Solution>
