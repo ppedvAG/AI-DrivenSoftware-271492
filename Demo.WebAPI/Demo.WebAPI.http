@@ -1,0 +1,35 @@
+@WebApi_HostAddress = http://localhost:5117
+
+GET {{WebApi_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
+
+GET {{WebApi_HostAddress}}/orders/
+Accept: application/json
+
+###
+
+GET {{WebApi_HostAddress}}/orders/1
+Accept: application/json
+
+###
+
+POST {{WebApi_HostAddress}}/orders/place
+Accept: application/json
+Content-Type: application/json
+{
+  "customerid": "8992C295-AD57-4486-A082-235A0CDA0384",
+  "productid": "FF2A9260-44AC-4D07-9E50-F9F75B842E03"
+}
+
+###
+
+POST {{WebApi_HostAddress}}/orders/cancel
+Accept: application/json
+Content-Type: application/json
+{
+  "orderid": "1"
+}
+
+###

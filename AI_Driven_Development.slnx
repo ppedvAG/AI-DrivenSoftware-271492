@@ -1,4 +1,7 @@
 <Solution>
+  <Folder Name="/CQRS/">
+    <Project Path="Demo.WebAPI/Demo.WebAPI.csproj" Id="f57775a7-801c-4349-9e98-32d4ea3f7842" />
+  </Folder>
   <Folder Name="/EventSourcing/">
     <Project Path="EventSourcing/EventSourcing.csproj" Id="ab8e85ba-24f9-402d-9976-8bf3e751ab80" />
   </Folder>
