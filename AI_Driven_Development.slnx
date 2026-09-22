@@ -1,4 +1,7 @@
 <Solution>
+  <Folder Name="/EventSourcing/">
+    <Project Path="EventSourcing/EventSourcing.csproj" Id="ab8e85ba-24f9-402d-9976-8bf3e751ab80" />
+  </Folder>
   <Folder Name="/Prompt_Engineering/">
     <File Path="LAB_003.md" />
     <Project Path="Badword_Filter.Test/Badword_Filter.Test.csproj" />
