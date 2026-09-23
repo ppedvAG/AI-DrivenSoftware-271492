@@ -1,6 +1,217 @@
 @WEGManagement.WebApi_HostAddress = http://localhost:5108
+@buildingId = 10000000-0000-0000-0000-000000000001
 
-GET {{WEGManagement.WebApi_HostAddress}}/weatherforecast/
+### ============================================================
+
+### BUILDING
+
+### ============================================================
+
+### Gebäude anlegen
+
+POST {{WEGManagement.WebApi_HostAddress}}/api/building
+Content-Type: application/json
+
+{
+"address": "Musterstraße 42, 10115 Berlin"
+}
+
+###
+
+### Gebäude laden
+
+GET {{WEGManagement.WebApi_HostAddress}}/api/building/{{buildingId}}
+Accept: application/json
+
+### ============================================================
+
+### OWNER
+
+### ============================================================
+
+### Eigentümer 1 anlegen
+
+POST {{WEGManagement.WebApi_HostAddress}}/api/owner
+Content-Type: application/json
+
+{
+"name": "Thomas Schneider",
+"contact": "[thomas.schneider@example.de](mailto:thomas.schneider@example.de)",
+"bankConnection": "DE89370400440532013000"
+}
+
+###
+
+### Eigentümer 2 anlegen
+
+POST {{WEGManagement.WebApi_HostAddress}}/api/owner
+Content-Type: application/json
+
+{
+"name": "Anna Müller",
+"contact": "[anna.mueller@example.de](mailto:anna.mueller@example.de)",
+"bankConnection": "DE12500105170648489890"
+}
+
+###
+
+### Eigentümer laden
+
+GET {{WEGManagement.WebApi_HostAddress}}/api/owner/{{ownerId}}
+Accept: application/json
+
+### ============================================================
+
+### APARTMENT
+
+### ============================================================
+
+### Wohnung 1 anlegen
+
+POST {{WEGManagement.WebApi_HostAddress}}/api/apartment
+Content-Type: application/json
+
+{
+"address": "Musterstraße 42, Wohnung 1",
+"size": 82.5,
+"floor": 1,
+"status": "Rented",
+"numberOfResidents": 2,
+"buildingId": "{{buildingId}}",
+"ownerId": "{{ownerId}}"
+}
+
+###
+
+### Wohnung 2 anlegen
+
+POST {{WEGManagement.WebApi_HostAddress}}/api/apartment
+Content-Type: application/json
+
+{
+"address": "Musterstraße 42, Wohnung 2",
+"size": 65.0,
+"floor": 2,
+"status": "Sold",
+"numberOfResidents": 1,
+"buildingId": "{{buildingId}}",
+"ownerId": "{{ownerId2}}"
+}
+
+###
+
+### Wohnung laden
+
+GET {{WEGManagement.WebApi_HostAddress}}/api/apartment/{{apartmentId}}
+Accept: application/json
+
+###
+
+### Eigentümer einer Wohnung wechseln
+
+PUT {{WEGManagement.WebApi_HostAddress}}/api/apartment/{{apartmentId}}/owner
+Content-Type: application/json
+
+{
+"ownerId": "{{ownerId2}}"
+}
+
+### ============================================================
+
+### CONDO FEE
+
+### ============================================================
+
+### Hausgeld für Wohnung 1 anlegen
+
+POST {{WEGManagement.WebApi_HostAddress}}/api/condofee
+Content-Type: application/json
+
+{
+"amount": 385.50,
+"dueDate": "2026-10-01T00:00:00Z",
+"apartmentId": "{{apartmentId}}"
+}
+
+###
+
+### Hausgeld laden
+
+GET {{WEGManagement.WebApi_HostAddress}}/api/condofee/{{condoFeeId}}
+Accept: application/json
+
+###
+
+### Fälligkeit prüfen / Erinnerung erzeugen
+
+POST {{WEGManagement.WebApi_HostAddress}}/api/condofee/{{condoFeeId}}/reminder
+Accept: application/json
+
+### ============================================================
+
+### PAYMENT
+
+### ============================================================
+
+### Hausgeld bezahlen
+
+POST {{WEGManagement.WebApi_HostAddress}}/api/payment
+Content-Type: application/json
+
+{
+"amount": 385.50,
+"date": "2026-09-25T10:30:00Z",
+"paymentType": "Transfer",
+"reference": "WEG-2026-10-001",
+"condoFeeId": "{{condoFeeId}}"
+}
+
+###
+
+### Zahlung laden
+
+GET {{WEGManagement.WebApi_HostAddress}}/api/payment/{{paymentId}}
+Accept: application/json
+
+### ============================================================
+
+### REPAIR ORDER
+
+### ============================================================
+
+### Reparaturauftrag anlegen
+
+POST {{WEGManagement.WebApi_HostAddress}}/api/repairorder
+Content-Type: application/json
+
+{
+"description": "Austausch der defekten Beleuchtung im Treppenhaus",
+"priority": "High",
+"cost": 1250.00,
+"date": "2026-09-23T09:00:00Z",
+"craftsman": "Elektro Schmidt GmbH",
+"buildingId": "{{buildingId}}"
+}
+
+###
+
+### Reparaturauftrag laden
+
+GET {{WEGManagement.WebApi_HostAddress}}/api/repairorder/{{repairOrderId}}
+Accept: application/json
+
+###
+
+### Reparatur starten
+
+POST {{WEGManagement.WebApi_HostAddress}}/api/repairorder/{{repairOrderId}}/start
+Accept: application/json
+
+###
+
+### Reparatur abschließen
+
+POST {{WEGManagement.WebApi_HostAddress}}/api/repairorder/{{repairOrderId}}/complete
 Accept: application/json
 
 ###
