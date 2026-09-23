@@ -45,3 +45,15 @@ KursRepository zu Kurs AI-Driven Software Development – Konzeption bis zum Tes
 	- Transparenz und Nachvollziebarkeit
 	- Verantwortung und Haftung
 	- Ethische Grundsätze
+
+
+## Entity Framework Code First
+
+```sh
+dotnet tool install --global dotnet-ef
+
+dotnet ef migrations add InitWegManagement -s ..\WEGManagement.WebApi\WEGManagement.WebApi.csproj 
+
+dotnet ef database update -s ..\WEGManagement.WebApi\WEGManagement.WebApi.csproj
+
+```

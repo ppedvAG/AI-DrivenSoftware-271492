@@ -13,4 +13,10 @@
   <Folder Name="/Solution Items/">
     <File Path="README.md" />
   </Folder>
+  <Folder Name="/WEGManagement/">
+    <File Path="SPEC.md" />
+    <Project Path="WEGManagement.Domain/WEGManagement.Domain.csproj" Id="c0019ccd-1c0d-401a-a50d-80a400cd6b55" />
+    <Project Path="WEGManagement.Infrastructure/WEGManagement.Infrastructure.csproj" Id="bb82436e-3241-46b5-9a23-d4885ff68224" />
+    <Project Path="WEGManagement.WebApi/WEGManagement.WebApi.csproj" Id="99fde50b-2854-4f9d-9d1a-c57b71eb8791" />
+  </Folder>
 </Solution>
