@@ -1,0 +1,50 @@
+﻿@model WEGManagement.UI.Mvc.Models.ApartmentViewModel
+
+@{
+    ViewData["Title"] = "Wohnung";
+}
+
+<h1>Wohnung</h1>
+
+<div class="card">
+    <div class="card-body">
+        <dl class="row">
+            <dt class="col-sm-3">Adresse</dt>
+            <dd class="col-sm-9">@Model.Address</dd>
+
+            
+            <dt class="col-sm-3">Größe</dt>
+            <dd class="col-sm-9">@Model.Size.ToString("0.0") m²</dd>
+
+            <dt class="col-sm-3">Etage</dt>
+            <dd class="col-sm-9">@Model.Floor</dd>
+
+            <dt class="col-sm-3">Status</dt>
+            <dd class="col-sm-9">@Model.Status</dd>
+
+            <dt class="col-sm-3">Bewohner</dt>
+            <dd class="col-sm-9">@Model.NumberOfResidents</dd>
+
+            <dt class="col-sm-3">Gebäude</dt>
+            <dd class="col-sm-9">@Model.BuildingAddress</dd>
+
+            <dt class="col-sm-3">Eigentümer</dt>
+            <dd class="col-sm-9">@Model.OwnerName</dd>
+        </dl>
+
+        <div class="mt-3">
+            <a asp-action="ChangeOwner"
+               asp-route-id="@Model.Id"
+               class="btn btn-primary">
+                Eigentümer wechseln
+            </a>
+
+            <a asp-action="Index"
+               class="btn btn-secondary">
+                Zurück
+            </a>
+        </div>
+    </div>
+    
+
+</div>

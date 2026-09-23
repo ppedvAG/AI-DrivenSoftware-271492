@@ -1,0 +1,53 @@
+﻿@model WEGManagement.UI.Mvc.Models.ChangeApartmentOwnerViewModel
+
+@{
+    ViewData["Title"] = "Eigentümer wechseln";
+}
+
+<h1>Eigentümer wechseln</h1>
+
+<p>
+    Wohnung: <strong>@ViewBag.ApartmentAddress</strong>
+</p>
+
+<form asp-action="ChangeOwner" method="post">
+
+
+    <input asp-for="ApartmentId" type="hidden" />
+
+    <div asp-validation-summary="ModelOnly"
+         class="text-danger"></div>
+
+    <div class="mb-3">
+        <label asp-for="OwnerId"
+               class="form-label">
+            Neuer Eigentümer
+        </label>
+
+        <select asp-for="OwnerId"
+                asp-items="ViewBag.Owners"
+                class="form-select">
+            <option value="">-- Eigentümer auswählen --</option>
+        </select>
+
+        <span asp-validation-for="OwnerId"
+              class="text-danger"></span>
+    </div>
+
+    <button type="submit"
+            class="btn btn-primary">
+        Eigentümer ändern
+    </button>
+
+    <a asp-action="Details"
+       asp-route-id="@Model.ApartmentId"
+       class="btn btn-secondary">
+        Abbrechen
+    </a>
+
+
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

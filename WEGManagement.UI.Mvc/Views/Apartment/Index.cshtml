@@ -1,0 +1,84 @@
+﻿@model IReadOnlyList<WEGManagement.UI.Mvc.Models.ApartmentViewModel>
+
+@{
+    ViewData["Title"] = "Wohnungen";
+}
+
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <h1>Wohnungen</h1>
+
+    
+    <a asp-action="Create" class="btn btn-primary">
+        Wohnung anlegen
+    </a>
+    
+
+</div>
+
+@if (!Model.Any())
+{
+    <div class="alert alert-info">
+        Es sind noch keine Wohnungen vorhanden.
+    </div>
+}
+else
+{
+
+    <div class="table-responsive">
+        <table class="table table-striped table-hover align-middle">
+            <thead> <tr> <th>Adresse</th> <th>Gebäude</th> <th>Größe</th> <th>Etage</th> <th>Status</th> <th>Bewohner</th> <th>Eigentümer</th> <th></th> </tr> </thead>
+
+            
+            <tbody>
+                @foreach (var apartment in Model)
+                {
+                    <tr>
+                        <td>
+                            @apartment.Address
+                        </td>
+
+                        <td>
+                            @apartment.BuildingAddress
+                        </td>
+
+                        <td>
+                            @apartment.Size.ToString("0.0") m²
+                        </td>
+
+                        <td>
+                            @apartment.Floor
+                        </td>
+
+                        <td>
+                            @apartment.Status
+                        </td>
+
+                        <td>
+                            @apartment.NumberOfResidents
+                        </td>
+
+                        <td>
+                            @apartment.OwnerName
+                        </td>
+
+                        <td class="text-end">
+                            <a asp-action="Details"
+                               asp-route-id="@apartment.Id"
+                               class="btn btn-sm btn-outline-primary">
+                                Details
+                            </a>
+
+                            <a asp-action="ChangeOwner"
+                               asp-route-id="@apartment.Id"
+                               class="btn btn-sm btn-outline-secondary">
+                                Eigentümer
+                            </a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+
+}

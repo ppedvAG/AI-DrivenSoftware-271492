@@ -1,0 +1,103 @@
+﻿@model WEGManagement.UI.Mvc.Models.CreateApartmentViewModel
+
+@{
+    ViewData["Title"] = "Wohnung anlegen";
+}
+
+<h1>Wohnung anlegen</h1>
+
+<form asp-action="Create" method="post">
+    <div asp-validation-summary="ModelOnly"
+         class="text-danger"></div>
+
+    <div class="mb-3">
+        <label asp-for="Address" class="form-label"></label>
+        <input asp-for="Address" class="form-control" />
+        <span asp-validation-for="Address"
+              class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Size" class="form-label"></label>
+        <input asp-for="Size"
+               type="number"
+               step="0.1"
+               class="form-control" />
+        <span asp-validation-for="Size"
+              class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Floor" class="form-label"></label>
+        <input asp-for="Floor"
+               type="number"
+               class="form-control" />
+        <span asp-validation-for="Floor"
+              class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Status" class="form-label"></label>
+        <select asp-for="Status"
+                asp-items="Html.GetEnumSelectList<WEGManagement.Domain.Enums.ApartmentStatus>()"
+                class="form-select">
+        </select>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="NumberOfResidents"
+               class="form-label"></label>
+        <input asp-for="NumberOfResidents"
+               type="number"
+               class="form-control" />
+        <span asp-validation-for="NumberOfResidents"
+              class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="BuildingId"
+               class="form-label">
+            Gebäude
+        </label>
+
+        <select asp-for="BuildingId"
+                asp-items="ViewBag.Buildings"
+                class="form-select">
+            <option value="">-- Gebäude auswählen --</option>
+        </select>
+
+        <span asp-validation-for="BuildingId"
+              class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="OwnerId"
+               class="form-label">
+            Eigentümer
+        </label>
+
+        <select asp-for="OwnerId"
+                asp-items="ViewBag.Owners"
+                class="form-select">
+            <option value="">-- Eigentümer auswählen --</option>
+        </select>
+
+        <span asp-validation-for="OwnerId"
+              class="text-danger"></span>
+    </div>
+
+    <button type="submit"
+            class="btn btn-primary">
+        Anlegen
+    </button>
+
+    <a asp-action="Index"
+       class="btn btn-secondary">
+        Abbrechen
+    </a>
+
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

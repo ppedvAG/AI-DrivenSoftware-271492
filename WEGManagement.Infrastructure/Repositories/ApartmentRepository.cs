@@ -14,6 +14,16 @@ public class ApartmentRepository : IApartmentRepository
         _context = context;
     }
 
+    public async Task<IReadOnlyList<Apartment>> GetAllAsync(CancellationToken cancellationToken = default)
+    {
+        return await _context.Apartments.Include(x => x.Owner)
+            .Include(x => x.Building).AsNoTracking()
+            .OrderBy(x => x.Building.Address)
+            .ThenBy(x => x.Floor)
+            .ThenBy(x => x.Address)
+            .ToListAsync(cancellationToken);
+    }
+
     public async Task<Apartment?> GetByIdAsync(
         Guid id,
         CancellationToken cancellationToken = default)

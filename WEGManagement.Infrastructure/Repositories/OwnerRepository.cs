@@ -15,6 +15,15 @@ public class OwnerRepository : IOwnerRepository
         _context = context;
     }
 
+    public async Task<IReadOnlyList<Owner>> GetAllAsync(CancellationToken cancellationToken = default)
+    {
+        return await _context.Owners
+            .Include(x => x.Apartments)
+            .AsNoTracking()
+            .OrderBy(x => x.Name)
+            .ToListAsync(cancellationToken);
+    }
+
     public async Task<Owner?> GetByIdAsync(
         Guid id,
         CancellationToken cancellationToken = default)

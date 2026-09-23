@@ -17,6 +17,7 @@
     <File Path="SPEC.md" />
     <Project Path="WEGManagement.Domain/WEGManagement.Domain.csproj" Id="c0019ccd-1c0d-401a-a50d-80a400cd6b55" />
     <Project Path="WEGManagement.Infrastructure/WEGManagement.Infrastructure.csproj" Id="bb82436e-3241-46b5-9a23-d4885ff68224" />
+    <Project Path="WEGManagement.UI.Mvc/WEGManagement.UI.Mvc.csproj" Id="56a50c66-3c43-410e-8443-983b9ad9185d" />
     <Project Path="WEGManagement.WebApi/WEGManagement.WebApi.csproj" Id="99fde50b-2854-4f9d-9d1a-c57b71eb8791" />
   </Folder>
 </Solution>

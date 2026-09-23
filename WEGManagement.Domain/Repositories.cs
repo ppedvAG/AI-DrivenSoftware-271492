@@ -11,6 +11,7 @@ public interface IBuildingRepository
 
 public interface IApartmentRepository
 {
+    Task<IReadOnlyList<Apartment>> GetAllAsync(CancellationToken cancellationToken = default);
     Task<Apartment?> GetByIdAsync(Guid id, CancellationToken cancellationToken = default);
     Task AddAsync(Apartment apartment, CancellationToken cancellationToken = default);
     Task UpdateAsync(Apartment apartment, CancellationToken cancellationToken = default);
@@ -18,6 +19,7 @@ public interface IApartmentRepository
 
 public interface IOwnerRepository
 {
+    Task<IReadOnlyList<Owner>> GetAllAsync(CancellationToken cancellationToken = default);
     Task<Owner?> GetByIdAsync(Guid id, CancellationToken cancellationToken = default);
     Task AddAsync(Owner owner, CancellationToken cancellationToken = default);
     Task UpdateAsync(Owner owner, CancellationToken cancellationToken = default);
